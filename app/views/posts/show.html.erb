@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+ <!-- Blog Posts-->
+  <div class="divPosts alinhaCentro">
+    <div>
+        <h2 class="postTitle">
+          <%= @post.title %>
+        </h2>
+        <p><span class="glyphicon glyphicon-time"></span> Postado em <%= @post.created_at.strftime("%d/%m/%Y") %>.</p>
+        <div>
+          <p><%= @post.content %></p>
+          <div class="alinhaDireita">
+            <p><span class="glyphicon glyphicon-time"></span> Atualizado em <%= @post.updated_at.strftime("%d/%m/%Y") %>.</p>
+            <%= link_to 'Editar post', edit_post_path, class: "btn btn-primary" %>
+          </div>
+          <hr>
+          <div>
+            <div>
+              <h5 class="negrito">Comentários:</h5>
+              <%= @post.comments.each do |comment| %>
+                <div class="comentarios">
+                  <p class="negrito autorComent"><%= comment.author %> em <%= comment.created_at.strftime("%d/%m/%Y") %></p>
+                  <p class="conteudoCoxment"><%= comment.body %></p>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+    </div>
+    <hr>
+
+  <p class="negrito">Comente este post:</p>
+    <%= form_for(Comment.new, method: :post) do |comment| %>
+        <input id="comment_post_id" type="hidden" name="comment[post_id]" value="<%= @post.id %>" />
+        <label>Autor:</label>
+        <p><%= comment.text_field :author, autocomplete: "off" %></p>
+        <label>Comentário:</label>
+        <p><%= comment.text_field :body, autocomplete: "off" %></p>
+        <div class="alinhaCentro">
+          <%= submit_tag 'Comentar', class: "btn btn-primary" %>
+        </div>
+    <% end %>
+  </div>

@@ -1,0 +1,44 @@
+body {
+  background-color: #EEEEEE;
+}
+.postTitle {
+  color: #2A87DB;
+}
+.negrito {
+  font-weight: bold;
+}
+.divPosts {
+  margin: 15px 0px;
+}
+.comentarios {
+  margin: auto;
+  max-width: 50%;
+}
+.alinhaCentro {
+  text-align: center;
+}
+.alinhaDireita {
+  text-align: right;
+}
+.alinhaEsquerda {
+  text-align: left;
+}
+.form-control {
+  margin: 5px 0px;
+}
+.jumbotron {
+  max-width: 50%;
+  margin: auto;
+}
+.autorComent {
+  background-color: #DADADA;
+}
+hr {
+  border: solid 1px black;
+}
+a {
+  color: #FFF !important;
+}
+a.btn-secondary {
+  background-color: black !important;
+}

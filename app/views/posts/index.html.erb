@@ -1,0 +1,87 @@
+<html ng-app="blogPosts">
+<meta charset="utf-8">
+
+<head>
+  <title>Blog</title>
+<!--   <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular/angular-messages.js"></script>
+  <script src="lib/angular/angular-route.js"></script>
+  <script src="lib/js/jquery.js"></script>
+  <script src="lib/js/bootstrap.js"></script>
+  <script src="lib/js/app.js"></script>
+  <script src="lib/js/routeConfig.js"></script>
+  <script src="lib/js/controller/PostCtrl.js"></script>
+  <script src="angular-locale_pt-br.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="lib/css/bootstrap.css"">
+  <link rel="stylesheet" type="text/css" href="lib/css/blog-home.css">
+  <link rel="stylesheet" type="text/css" href="lib/css/style.css"> -->
+
+</head>
+
+
+<body>
+
+  <!-- Page Content -->
+  <div class="container jumbotron">
+
+    <div class="row">
+
+      <!-- Blog Entries Column -->
+      <div class="col-md-12">
+
+        <h1 class="alinhaCentro">
+          Blog do Pensador
+        </h1>
+
+        <div class="alinhaDireita">
+          <%= link_to 'Novo post', new_post_path, class: "btn btn-primary" %>
+        </div>
+        <!-- {{posts}} -->
+        <br/>
+
+        <!-- Blog Posts-->
+        <div class="divPosts">
+          <div>
+            <% @posts.each do |post| %>
+              <h2 class="postTitle">
+                <%= post.title %>
+              </h2>
+              <p><span class="glyphicon glyphicon-time"></span> Postado em <%= post.created_at.strftime("%d/%m/%Y") %>.</p>
+              <div>
+                <p><%= post.content %></p> <!-- max 50 caracteres -->
+                <div class="alinhaDireita">
+                  <%= link_to 'Leia mais...', post_path(post), class: "btn btn-secondary" %>
+                </div>
+                <div class="alinhaEsquerda">
+                  <p><span class="glyphicon glyphicon-time"></span> Atualizado em <%= post.updated_at.strftime("%d/%m/%Y") %>.</p>
+                </div>
+              <hr>
+            <% end %>
+          </div>
+        </div>
+
+      <!-- Pager -->
+      <ul class="pager">
+        <li class="previous">
+          <a href="#">&larr; Older</a>
+        </li>
+        <li class="next">
+          <a href="#">Newer &rarr;</a>
+        </li>
+      </ul>
+
+    </div>
+    <!-- /.col-md-12 -->
+
+  </div>
+  <!-- /.row -->
+
+  <div ng-include="'footer.html'"></div>
+
+</div>
+<!-- /.container -->
+</body>
+
+</html>
+
