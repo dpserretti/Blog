@@ -20,21 +20,19 @@
           <div>
             <div>
               <h5 class="negrito">Comentários:</h5>
-
               <%= @post.comments.each do |comment| %>
                 <div class="comentarios">
                   <p class="negrito autorComent"><%= comment.author %> em <%= comment.created_at.strftime("%d/%m/%Y às %H:%M") %></p>
                   <p class="conteudoCoxment"><%= comment.body %></p>
-                  <%= link_to '<button class="btn btn-primary">Editar</button>'.html_safe,  edit_comment_path(comment)  %>
+                  <%= link_to '<button class="btn btn-primary">Editar</button>'.html_safe, edit_comment_path(comment)  %>
                   <%= link_to '<button class="btn btn-primary">Apagar</button>'.html_safe, comment, method: :delete, data: { confirm: 'Tem certeza?' } %>
                 </div>
-                  <br/>
+                <br/>
               <% end %>
             </div>
           </div>
         </div>
     </div>
-    <hr>
 
   <p class="negrito">Comente este post:</p>
     <%= form_for(Comment.new, method: :post) do |comment| %>
@@ -47,4 +45,5 @@
           <%= submit_tag 'Comentar', class: "btn btn-primary" %>
         </div>
     <% end %>
+    <hr>
   </div>
