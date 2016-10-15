@@ -20,7 +20,7 @@
           <div>
             <div>
               <h5 class="negrito">Comentários:</h5>
-              <%= @post.comments.each do |comment| %>
+              <% @post.comments.each do |comment| %>
                 <div class="comentarios">
                   <p class="negrito autorComent"><%= comment.author %> em <%= comment.created_at.strftime("%d/%m/%Y às %H:%M") %></p>
                   <p class="conteudoCoxment"><%= comment.body %></p>
