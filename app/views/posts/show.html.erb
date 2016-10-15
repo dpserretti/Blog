@@ -6,11 +6,12 @@
         <h2 class="postTitle">
           <%= @post.title %>
         </h2>
-        <p><span class="glyphicon glyphicon-time"></span> Postado em <%= @post.created_at.strftime("%d/%m/%Y") %>.</p>
+        <p><span class="glyphicon glyphicon-time"></span> Postado em <%= @post.created_at.strftime("%d/%m/%Y às %H:%M") %>.</p>
         <div>
-          <p><%= @post.content %></p>
+          <p class="negrito"><%= @post.content %></p>
+          <br/>
           <div class="alinhaCentro">
-            <p><span class="glyphicon glyphicon-time"></span> Atualizado em <%= @post.updated_at.strftime("%d/%m/%Y") %>.</p>
+            <p><span class="glyphicon glyphicon-time"></span> Atualizado em <%= @post.updated_at.strftime("%d/%m/%Y às %H:%M") %>.</p>
           </div>
           <div class="alinhaDireita">
             <%= link_to 'Editar post', edit_post_path, class: "btn btn-primary" %>
@@ -19,13 +20,15 @@
           <div>
             <div>
               <h5 class="negrito">Comentários:</h5>
+
               <%= @post.comments.each do |comment| %>
                 <div class="comentarios">
-                  <p class="negrito autorComent"><%= comment.author %> em <%= comment.created_at.strftime("%d/%m/%Y") %></p>
+                  <p class="negrito autorComent"><%= comment.author %> em <%= comment.created_at.strftime("%d/%m/%Y às %H:%M") %></p>
                   <p class="conteudoCoxment"><%= comment.body %></p>
                   <%= link_to '<button class="btn btn-primary">Editar</button>'.html_safe,  edit_comment_path(comment)  %>
                   <%= link_to '<button class="btn btn-primary">Apagar</button>'.html_safe, comment, method: :delete, data: { confirm: 'Tem certeza?' } %>
                 </div>
+                  <br/>
               <% end %>
             </div>
           </div>

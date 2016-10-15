@@ -6,6 +6,8 @@ body {
 }
 .negrito {
   font-weight: bold;
+  margin: auto;
+  width: 50%;
 }
 .divPosts {
   margin: 15px 0px;
