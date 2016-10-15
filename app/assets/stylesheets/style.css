@@ -42,3 +42,24 @@ a {
 a.btn-secondary {
   background-color: black !important;
 }
+.pagination {
+  text-align: center;
+  width: 100%;
+  color: #000 !important;
+  text-decoration: none !important;
+}
+.pagination a {
+  cursor: pointer !important;
+}
+.pagination:hover {
+  color: none !important;
+  background-color: none !important;
+}
+
+.pagination .current {
+  color: #FFF;
+  background-color: #2A87DB;
+}
+.disabled {
+  color: grey;
+}

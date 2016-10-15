@@ -49,7 +49,7 @@
               </h2>
               <p><span class="glyphicon glyphicon-time"></span> Postado em <%= post.created_at.strftime("%d/%m/%Y") %>.</p>
               <div>
-                <p><%= post.content %></p> <!-- max 50 caracteres -->
+                <p><%= truncate(post.content, :length => 50) %></p>
                 <div class="alinhaDireita">
                   <%= link_to 'Leia mais...', post_path(post), class: "btn btn-secondary" %>
                 </div>
@@ -61,15 +61,7 @@
           </div>
         </div>
 
-      <!-- Pager -->
-      <ul class="pager">
-        <li class="previous">
-          <a href="#">&larr; Older</a>
-        </li>
-        <li class="next">
-          <a href="#">Newer &rarr;</a>
-        </li>
-      </ul>
+    <%= will_paginate @posts %>
 
     </div>
     <!-- /.col-md-12 -->

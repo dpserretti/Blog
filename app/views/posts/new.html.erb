@@ -24,10 +24,12 @@
     <label>Conteúdo</label><br>
     <%= f.text_field :content, class: "form-control" %>
   </div>
-  <div class="actions alinhaDireita">
+  <div class="actions alinhaCentro">
     <%= f.submit 'Postar', class: "btn btn-primary" %>
     <% end %>
-    <button class="btn btn-primary"><a href="<%= posts_path %>">Voltar</a></button>
+  </div>
+  <div class="alinhaDireita">
+    <%= link_to 'Voltar', posts_path, class: "btn btn-primary" %>
   </div>
 </div>
 

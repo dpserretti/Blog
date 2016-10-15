@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /posts/1
@@ -42,7 +42,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post atualizado com sucesso.' }
+        format.html { redirect_to @post, notice: 'Post atualizado.' }
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit }
@@ -60,7 +60,7 @@ class PostsController < ApplicationController
     end
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post deletado com sucesso.' }
+      format.html { redirect_to posts_url, notice: 'Post deletado.' }
       format.json { head :no_content }
     end
   end

@@ -1,6 +1,33 @@
-<h1>Editing Comment</h1>
+<div class="jumbotron">
+  <div class="alinhaCentro">
+    <h1>Editar comentário</h1>
+  </div>
 
-<%= render 'form' %>
+  <%= form_for(@comment) do |f| %>
+  <% if @comment.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
 
-<%= link_to 'Show', @comment %> |
-<%= link_to 'Back', comments_path %>
+    <ul>
+      <% @comment.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div class="field">
+    <label>Autor:</label><br>
+    <%= f.text_field :author, class: "form-control" %>
+  </div>
+  <div class="field">
+    <label>Conteúdo</label><br>
+    <%= f.text_field :body, class: "form-control" %>
+  </div>
+  <div class="actions alinhaDireita">
+    <%= f.submit 'Atualizar', class: "btn btn-primary" %>
+    <% end %>
+    <%= link_to '<button class="btn btn-primary">Apagar</button>'.html_safe, @comment, method: :delete, data: { confirm: 'Tem certeza?' } %>
+    <button class="btn btn-primary"><a href="<%= comments_path %>">Voltar</a></button>
+  </div>
+</div>

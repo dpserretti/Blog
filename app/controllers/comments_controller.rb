@@ -18,15 +18,14 @@ class CommentsController < ApplicationController
   end
 
   # GET /comments/1/edit
-  # def edit
-  # end
+  def edit
+  end
 
   # POST /comments
   # POST /comments.json
   def create
     @comment = Comment.new(comment_params)
     @post = Post.where(:id => @comment.post_id)
-    # require 'pry'; binding.pry
     respond_to do |format|
       if @comment.save
         format.html { redirect_to post_path(@post[0].id), notice: 'Comentário criado.' }
@@ -40,27 +39,28 @@ class CommentsController < ApplicationController
 
   # PATCH/PUT /comments/1
   # PATCH/PUT /comments/1.json
-  # def update
-  #   respond_to do |format|
-  #     if @comment.update(comment_params)
-  #       format.html { redirect_to @comment, notice: 'Comentário atualizado.' }
-  #       format.json { render :show, status: :ok, location: @comment }
-  #     else
-  #       format.html { render :edit }
-  #       format.json { render json: @comment.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
+  def update
+    respond_to do |format|
+      if @comment.update(comment_params)
+        format.html { redirect_to post_path(@comment.post_id), notice: 'Comentário atualizado.' }
+        format.json { render :show, status: :ok, location: @comment }
+      else
+        format.html { render :edit }
+        format.json { render json: @comment.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # DELETE /comments/1
   # DELETE /comments/1.json
-  # def destroy
-  #   @comment.destroy
-  #   respond_to do |format|
-  #     format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
-  #     format.json { head :no_content }
-  #   end
-  # end
+  def destroy
+    @post = Post.where(:id => @comment.post_id)
+    @comment.destroy
+    respond_to do |format|
+      format.html { redirect_to post_path(@post[0].id), notice: 'Comentário apagado..' }
+      format.json { head :no_content }
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
